@@ -39,7 +39,7 @@ note:
 
 # PaaS
 * <del>Hardware</del>
-* <del>OS</del> <!-- .element: class="fragment" -->
+* <del>OS</del>
 * Framework <!-- .element: class="fragment" -->
 
 note:
@@ -50,9 +50,9 @@ note:
 ---
 
 # FaaS
-* <del>Hardware</del> <!-- .element: class="fragment" -->
-* <del>OS</del> <!-- .element: class="fragment" -->
-* <del>Framework</del> <!-- .element: class="fragment" -->
+* <del>Hardware</del> 
+* <del>OS</del>
+* <del>Framework</del>
 * Function <!-- .element: class="fragment" -->
 
 note:
@@ -97,11 +97,43 @@ note:
 
 ---
 
+# Propriétés
+* Event-driven
+
+---
+
+# Use cases
+
+* Loterie bons de réduction
+
+note:
+* un fonctionnalité spécifique avec bcp de trafic
+* qu'on ne connaît pas à l'avance
+
+---
+
+# Use cases
+
+* Event-sourcing
+
+note:
+* nb d'événements non connus à l'avance
+
+---
+
+# Use cases
+
+* Détecter la modification de resources Azure
+
+---
+
 # Contreparties
 * Stateless
 
 note:
-* liés au framework
+* lié au framework
+* contournable
+* durable functions
 
 ---
 
@@ -117,10 +149,9 @@ note:
 * Cold start
 
 note:
-* instance démarée automatiquement
-* éteinte si pas d'activité
+* instance démarée automatiquement / éteinte si pas d'activité
 * c^ orchestrateurs
-* stratégies
+* adapter sa stratégie
 
 ---
 
@@ -128,8 +159,12 @@ note:
 * Dirigiste
 * Accès simplifié aux resources
 
-note:
-* pas d'IOC
+---
+
+# TODO
+* Exemple trigger HTTP (C#)
+* Exemple trigger schedule (Java)
+* Exemple trigger base (NodeJS)
 
 ---
 
@@ -180,11 +215,10 @@ note:
 * Azure functions tools
 * VS / VS Code
 * Maven
-* Azure ?
+* Emulateurs (Cosmos)
 
----
-
-# TU ?
+note:
+* Resources Azure ? Service bus
 
 ---
 
@@ -201,13 +235,6 @@ note:
 
 ---
 
-# Use cases
-
-* Loterie bons de réduction
-* Event-sourcing
-
----
-
 # Retour d'expérience
 * Code simple et direct
 * Fonctions simples (micro-services)
@@ -215,5 +242,13 @@ note:
 ---
 
 # Manques
-* IoC non native
 * Healthchecks
+
+---
+
+# TODO Durable functions
+
+---
+
+# TODO Logic Apps 
+
