@@ -20,8 +20,7 @@ note:
 * Hardware <!-- .element: class="fragment" -->
 
 note:
-* rappel offres hébergement =>
-    * qu'est-ce que je gère ?
+* qu'est-ce que je gère ?
 * pannes matérielles
 * firewall / réseau
 
@@ -32,7 +31,8 @@ note:
 * OS <!-- .element: class="fragment" -->
 
 note:
-* je gère pannes logicielles
+* qu'est-ce que je gère ?
+* pannes logicielles
 * mises à jour
 
 ---
@@ -43,6 +43,7 @@ note:
 * Framework <!-- .element: class="fragment" -->
 
 note:
+* qu'est-ce que je gère ?
 * montées de version
 * archi/solutions logicielles (bases, messaging, etc.)
 * scalabilité
@@ -56,6 +57,7 @@ note:
 * Function <!-- .element: class="fragment" -->
 
 note:
+* qu'est-ce que je gère ?
 * code
 
 ---
@@ -72,6 +74,8 @@ note:
 ---
 
 # Azure Functions
+* Event-driven
+* Serverless <!-- .element: class="fragment" -->
 
 note:
 * Implémentation Microsoft
@@ -83,8 +87,9 @@ note:
 * Infinite scaling
 
 note:
-* promesse de scalabilité
-* vs VM pré-provisionnée (black-friday)
+* promesse
+* vs VM pré-provisionnée
+* eg black-friday
 
 ---
 
@@ -97,13 +102,15 @@ note:
 
 ---
 
-# Propriétés
-* Event-driven
+# Quels use cases ?
+* back-end pour une SPA <!-- .element: class="fragment" -->
+
+note:
+* avec static web storage
 
 ---
 
-# Use cases
-
+# Quels use cases ?
 * Loterie bons de réduction
 
 note:
@@ -112,8 +119,12 @@ note:
 
 ---
 
-# Use cases
+# Quels use cases ?
+* Réagir aux modifications de resources Azure
 
+---
+
+# Quels use cases ?
 * Event-sourcing
 
 note:
@@ -121,23 +132,16 @@ note:
 
 ---
 
-# Use cases
-
-* Détecter la modification de resources Azure
-
----
-
-# Contreparties
+# Inconvénients
 * Stateless
 
 note:
 * lié au framework
-* contournable
-* durable functions
+* contournable (durable functions, cache partagé)
 
 ---
 
-# Contreparties
+# Inconvénients
 * Durée limitée
 
 note:
@@ -145,7 +149,7 @@ note:
 
 ---
 
-# Contreparties
+# Inconvénients
 * Cold start
 
 note:
@@ -156,51 +160,54 @@ note:
 ---
 
 # Opiniated framework
-* Dirigiste
-* Accès simplifié aux resources
+* Déclarations simplifiées 
 
 ---
 
 # TODO
 * Exemple trigger HTTP (C#)
-* Exemple trigger schedule (Java)
-* Exemple trigger base (NodeJS)
+* Exemple trigger BDD (Java)
 
 ---
 
 # Triggers
 * Http / Webhooks
-* Bus de messages
-* Bases de données
-* Scheduler
+* Bus de messages <!-- .element: class="fragment" -->
+* Bases de données <!-- .element: class="fragment" -->
+* Scheduler <!-- .element: class="fragment" -->
 * etc.
 
 --- 
 
+# Opiniated framework
+* Accès simplifié aux resources
+
+---
+
 # Resources
 * Bus de messages
-* Bases de données
-* Key Vault
-* Azure AD
+* Bases de données <!-- .element: class="fragment" -->
+* Key Vault <!-- .element: class="fragment" -->
+* Azure AD <!-- .element: class="fragment" -->
+
+---
+
+# TODO
+* Exemple resource Service Bus (C#)
+* Exemple resource BDD (NodeJS)
 
 --- 
 
 # Langages
 * C#
-* JavaScript
-* Java
-* Python
+* JavaScript <!-- .element: class="fragment" -->
+* Java <!-- .element: class="fragment" -->
+* Python <!-- .element: class="fragment" -->
+* PowerShell <!-- .element: class="fragment" -->
 
 note:
 * C# et JavaScript ++
 * C# script
-
----
-
-# Configuration
-* function.json
-* env vars
-* Key Vault
 
 ---
 
@@ -210,26 +217,25 @@ note:
 
 ---
 
-# Dev en local
+# Configuration
+* function.json 
+* Variables d'environnement <!-- .element: class="fragment" -->
+* Azure Key Vault <!-- .element: class="fragment" -->
 
+---
+
+# En local
 * Azure functions tools
-* VS / VS Code
-* Maven
-* Emulateurs (Cosmos)
+* VS / Code <!-- .element: class="fragment" -->
+* Maven <!-- .element: class="fragment" -->
+* Emulateurs (Cosmos) <!-- .element: class="fragment" -->
 
 note:
 * Resources Azure ? Service bus
 
 ---
 
-# Function apps
-* groupement logique de fonctions
-* durable functions
-
----
-
 # Déploiement
-
 * Templates ARM
 * Azure DevOps
 
@@ -246,9 +252,13 @@ note:
 
 ---
 
-# TODO Durable functions
+# Durable functions
 
 ---
 
-# TODO Logic Apps 
+# Logic Apps 
+
+---
+
+# Merci
 
