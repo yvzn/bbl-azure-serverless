@@ -3,6 +3,8 @@
 
 La présentation se trouve dans le fichier presentation.markdown
 
+Elle peut être visualisée [sur Github pages](https://yvzn.github.io/bbl-azure-serverless)
+
 ## Setup
 
 L'affichage des slides utilise le framework de présentation
