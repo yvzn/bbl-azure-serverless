@@ -2,7 +2,7 @@
 
 ---
 
-## Serverless ?
+# Serverless ?
 
 ---
 
@@ -10,9 +10,9 @@
 * Less servers <!-- .element: class="fragment" -->
 
 note:
-* moins de config/gestion
-* managé par un mécanisme externe
-* concentrer sur le code
+* ↘ de config, de gestion
+* managé
+* focus sur le code
 
 ---
 
@@ -20,9 +20,11 @@ note:
 * Hardware <!-- .element: class="fragment" -->
 
 note:
-* qu'est-ce que je gère ?
+* je gère : je m'occupe
 * pannes matérielles
-* firewall / réseau
+* réseau
+    * firewall
+    * FAI
 
 ---
 
@@ -31,160 +33,165 @@ note:
 * OS <!-- .element: class="fragment" -->
 
 note:
-* qu'est-ce que je gère ?
 * pannes logicielles
 * mises à jour
 
 ---
 
-# PaaS
+## PaaS
 * <del>Hardware</del>
 * <del>OS</del>
 * Framework <!-- .element: class="fragment" -->
 
 note:
-* qu'est-ce que je gère ?
 * montées de version
-* archi/solutions logicielles (bases, messaging, etc.)
+* archi logicielles (bases, messaging, etc.)
 * scalabilité
 
 ---
 
-# FaaS
+## FaaS
 * <del>Hardware</del> 
 * <del>OS</del>
 * <del>Framework</del>
 * Function <!-- .element: class="fragment" -->
 
 note:
-* qu'est-ce que je gère ?
 * code
 
 ---
 
-# Implémentations
-
+## Functions
 * Azure Functions
 * AWS Lambda <!-- .element: class="fragment" -->
 * Google Functions <!-- .element: class="fragment" -->
 
 note:
+* sous-partie de serverless
 * Open FaaS
 
 ---
 
-# Azure Functions
+## Azure Functions
 * Event-driven
 * Serverless <!-- .element: class="fragment" -->
 
 note:
-* Implémentation Microsoft
+* Microsoft
 * Ecosystème Azure
 
 ---
 
-# Avantages
+## Avantages
 * Infinite scaling
 
 note:
-* promesse
 * vs VM pré-provisionnée
 * eg black-friday
 
 ---
 
-# Avantages
+## Avantages
 * Pay as you go
 
 note:
 * 1 million d'exécutions gratuites
 * 0 exécution = 0€
+* exemple UAT, testing
 
 ---
 
-# Quels use cases ?
-* back-end pour une SPA <!-- .element: class="fragment" -->
+# Use cases ?
+
+---
+
+## API HTTP
+* microservices <!-- .element: class="fragment" -->
 
 note:
-* avec static web storage
+* HTTP = événement
 
 ---
 
-# Quels use cases ?
+## TODO
+* Exemple trigger HTTP (Java)
+
+note:
+* troll
+
+---
+
+## TODO
+* Exemple trigger HTTP (C#)
+
+---
+
+## API HTTP
 * Loterie bons de réduction
 
 note:
-* un fonctionnalité spécifique avec bcp de trafic
-* qu'on ne connaît pas à l'avance
+* != full serverless/microservices 💡
+* un fonctionnalité avec potentiellement bcp de trafic ?
 
 ---
 
-# Quels use cases ?
+## API HTTP
+* back-end pour une SPA <!-- .element: class="fragment" -->
+
+note:
+* exemple avec static web storage
+* proxy 💡
+
+---
+
+# Use cases ?
+
+---
+
+## Event sourcing
+
+TODO
+
+note:
+* volumétrie non connues à l'avance
+
+---
+
+## TODO
+* Exemple trigger Service Bus (C#)
+
+---
+
+## Event sourcing
+
 * Réagir aux modifications de resources Azure
 
 ---
 
-# Quels use cases ?
-* Event-sourcing
+## TODO
+
+* Exemple resource BDD (NodeJS)
+* Entrée et sortie
+
+---
+
+# Opiniated Framework
 
 note:
-* nb d'événements non connus à l'avance
+* Déclarations simplifiées
 
 ---
 
-# Inconvénients
-* Stateless
-
-note:
-* lié au framework
-* contournable (durable functions, cache partagé)
-
----
-
-# Inconvénients
-* Durée limitée
-
-note:
-* 10 min max par exécution
-
----
-
-# Inconvénients
-* Cold start
-
-note:
-* instance démarée automatiquement / éteinte si pas d'activité
-* c^ orchestrateurs
-* adapter sa stratégie
-
----
-
-# Opiniated framework
-* Déclarations simplifiées 
-
----
-
-# TODO
-* Exemple trigger HTTP (C#)
-* Exemple trigger BDD (Java)
-
----
-
-# Triggers
+## Triggers
 * Http / Webhooks
 * Bus de messages <!-- .element: class="fragment" -->
 * Bases de données <!-- .element: class="fragment" -->
 * Scheduler <!-- .element: class="fragment" -->
 * etc.
 
---- 
-
-# Opiniated framework
-* Accès simplifié aux resources
-
 ---
 
-# Resources
+## Resources
 * Bus de messages
 * Bases de données <!-- .element: class="fragment" -->
 * Key Vault <!-- .element: class="fragment" -->
@@ -192,13 +199,7 @@ note:
 
 ---
 
-# TODO
-* Exemple resource Service Bus (C#)
-* Exemple resource BDD (NodeJS)
-
---- 
-
-# Langages
+## Langages
 * C#
 * JavaScript <!-- .element: class="fragment" -->
 * Java <!-- .element: class="fragment" -->
@@ -211,54 +212,120 @@ note:
 
 ---
 
-# Attributes (annotations)
+## Attributes (annotations)
 * Pour les triggers et les bindings
 * C# et Java
 
 ---
 
-# Configuration
-* function.json 
-* Variables d'environnement <!-- .element: class="fragment" -->
-* Azure Key Vault <!-- .element: class="fragment" -->
+## 🌟 IoC
+
+TODO
+
+--- 
+
+# Avantages
 
 ---
 
-# En local
-* Azure functions tools
-* VS / Code <!-- .element: class="fragment" -->
+## Configuration simplifiée
+* function.json 
+* Variables d'environnement <!-- .element: class="fragment" -->
+* 🌟 Azure Key Vault <!-- .element: class="fragment" -->
+
+---
+
+## En local
+* Azure functions tools (CLI) 💡
+* VS, VS Code <!-- .element: class="fragment" -->
 * Maven <!-- .element: class="fragment" -->
 * Emulateurs (Cosmos) <!-- .element: class="fragment" -->
 
 note:
+* != des autres clouds
 * Resources Azure ? Service bus
 
 ---
 
-# Déploiement
-* Templates ARM
+# Inconvénients 
+
+---
+
+## Stateless
+
+note:
+* lié au framework
+* contournable 🤔 (durable functions, cache partagé) 
+
+---
+
+## Durée limitée
+
+note:
+* 10 min max par exécution
+
+---
+
+## Cold start
+
+note:
+* instance démarée automatiquement / éteinte si pas d'activité
+* qq secondes, en théorie 💡
+* c^ orchestrateurs
+* adapter sa stratégie 🤔 (polling, 🌟 Azure Front Door) 💡
+* 🌟 Functions premium
+
+---
+
+## Manquent...
+* Healthcheck
+* Swagger
+
+note:
+* swagger manuel
+
+---
+
+## Networking
+* 🌟 VNET / ASE 💡
+* DNS
+
+---
+
+## Pricing
+
+note:
+* Avoir une idée de la volumétrie
+
+---
+
+# Ecosystème
+
+---
+
+## Application Insights 💡
+
+---
+
+## Déploiement
+* Templates ARM 💡
 * Azure DevOps
+    * 🌟 job Functions <!-- .element: class="fragment" -->
+
+note:
+* push depuis poste local 
 
 ---
 
-# Retour d'expérience
-* Code simple et direct
-* Fonctions simples (micro-services)
+## Durable functions
 
+* 🌟 Durable Entities <!-- .element: class="fragment" -->
 ---
 
-# Manques
-* Healthchecks
-
----
-
-# Durable functions
-
----
-
-# Logic Apps 
+## Logic Apps 
 
 ---
 
 # Merci
 
+💬
