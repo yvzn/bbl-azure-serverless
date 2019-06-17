@@ -1,13 +1,13 @@
-# Azure Serverless
+# azure serverless
 
 ---
 
-# Serverless ?
+## serverless
 
 ---
 
-* <del>Serverless</del>
-* Less servers <!-- .element: class="fragment" -->
+## <del>serverless</del>
+less servers
 
 note:
 * ↘ de config, de gestion
@@ -16,21 +16,27 @@ note:
 
 ---
 
-## On premise
-* Hardware <!-- .element: class="fragment" -->
+## serveurs  ?
 
 note:
-* je gère : je m'occupe
-* pannes matérielles
-* réseau
-    * firewall
-    * FAI
+* c^ déployer une application
+* je gère, je m'occupe
 
 ---
 
-## IaaS
-* <del>Hardware</del>
-* OS <!-- .element: class="fragment" -->
+## on premise
+* hardware <!-- .element: class="fragment" -->
+
+note:
+* avantages vs. inconvénients
+* pannes matérielles
+* réseau (firewall, fai)
+
+---
+
+## iaas
+* <del>hardware</del>
+* os <!-- .element: class="fragment" -->
 
 note:
 * pannes logicielles
@@ -38,10 +44,10 @@ note:
 
 ---
 
-## PaaS
-* <del>Hardware</del>
-* <del>OS</del>
-* Framework <!-- .element: class="fragment" -->
+## paas
+* <del>hardware</del>
+* <del>os</del>
+* framework <!-- .element: class="fragment" -->
 
 note:
 * montées de version
@@ -50,208 +56,222 @@ note:
 
 ---
 
-## FaaS
-* <del>Hardware</del> 
-* <del>OS</del>
-* <del>Framework</del>
-* Function <!-- .element: class="fragment" -->
+## faas
+* <del>hardware</del> 
+* <del>os</del>
+* <del>framework</del>
+* function <!-- .element: class="fragment" -->
 
 note:
 * code
 
 ---
 
-## Functions
-* Azure Functions
-* AWS Lambda <!-- .element: class="fragment" -->
-* Google Functions <!-- .element: class="fragment" -->
+## offres faas
+* azure functions ⚡ <!-- .element: class="fragment" -->
+* google functions <!-- .element: class="fragment" -->
+* aws lambda <!-- .element: class="fragment" -->
 
 note:
 * sous-partie de serverless
-* Open FaaS
+* open faas
 
 ---
 
-## Azure Functions
-* Event-driven
-* Serverless <!-- .element: class="fragment" -->
+## functions 
+⚡ event-driven <!-- .element: class="fragment" -->
 
 note:
-* Microsoft
-* Ecosystème Azure
+* microsoft
+* déclencheur = événement
+* ecosystème azure
 
 ---
 
-## Avantages
-* Infinite scaling
+## functions
+⚡ infinite scaling <!-- .element: class="fragment" -->
 
 note:
-* vs VM pré-provisionnée
+* vs vm pré-provisionnée
+* + load balancer
 * eg black-friday
 
 ---
 
-## Avantages
-* Pay as you go
+## todo
+schéma montée charge vm
+
+---
+
+
+## todo
+schéma montée charge serverless
+
+---
+
+## functions
+⚡ pay as you go <!-- .element: class="fragment" -->
 
 note:
 * 1 million d'exécutions gratuites
 * 0 exécution = 0€
-* exemple UAT, testing
+* exemple uat, testing
 
 ---
 
-# Use cases ?
+# use cases ?
 
 ---
 
-## API HTTP
-* microservices <!-- .element: class="fragment" -->
+## api http
+microservices <!-- .element: class="fragment" -->
 
 note:
-* HTTP = événement
+* événement = requête http
 
 ---
 
-## TODO
-* Exemple trigger HTTP (Java)
-
-note:
-* troll
+## todo
+exemple trigger http (java)
 
 ---
 
-## TODO
-* Exemple trigger HTTP (C#)
+## todo
+exemple trigger http (c#)
 
 ---
 
-## API HTTP
-* Loterie bons de réduction
+## api http
+back-end pour une spa ? <!-- .element: class="fragment" -->
+
+---
+
+## todo
+screenshot function proxy 💡
+
+---
+
+## todo
+screenshot static web storage 💡
+
+---
+
+## api http
+loterie bons de réduction <!-- .element: class="fragment" -->
 
 note:
 * != full serverless/microservices 💡
-* un fonctionnalité avec potentiellement bcp de trafic ?
+* un fonctionnalité avec bcp de trafic ?
 
 ---
 
-## API HTTP
-* back-end pour une SPA <!-- .element: class="fragment" -->
-
-note:
-* exemple avec static web storage
-* proxy 💡
+# use cases ?
 
 ---
 
-# Use cases ?
-
----
-
-## Event sourcing
-
-TODO
+## event sourcing pt. 1
 
 note:
 * volumétrie non connues à l'avance
 
 ---
 
-## TODO
-* Exemple trigger Service Bus (C#)
+## todo
+schéma event sourcing
 
 ---
 
-## Event sourcing
-
-* Réagir aux modifications de resources Azure
-
----
-
-## TODO
-
-* Exemple resource BDD (NodeJS)
-* Entrée et sortie
+## todo
+exemple trigger service bus (c#)
 
 ---
 
-# Opiniated Framework
+## event sourcing pt. 2
+réagir aux update de resources azure <!-- .element: class="fragment" -->
+
+---
+
+## todo
+* exemple resource bdd (nodejs)
+* entrée et sortie
+
+---
+
+# opiniated framework
 
 note:
-* Déclarations simplifiées
+* déclarations simplifiées
 
 ---
 
-## Triggers
-* Http / Webhooks
-* Bus de messages <!-- .element: class="fragment" -->
-* Bases de données <!-- .element: class="fragment" -->
-* Scheduler <!-- .element: class="fragment" -->
-* etc.
+## événements = triggers
+* http / webhooks <!-- .element: class="fragment" -->
+* bus de messages <!-- .element: class="fragment" -->
+* bases de données <!-- .element: class="fragment" -->
+* scheduler <!-- .element: class="fragment" -->
+* etc. <!-- .element: class="fragment" -->
 
 ---
 
-## Resources
-* Bus de messages
-* Bases de données <!-- .element: class="fragment" -->
-* Key Vault <!-- .element: class="fragment" -->
-* Azure AD <!-- .element: class="fragment" -->
+## resources = bindings
+* bus de messages <!-- .element: class="fragment" -->
+* bases de données <!-- .element: class="fragment" -->
+* key vault <!-- .element: class="fragment" -->
+* azure ad <!-- .element: class="fragment" -->
 
 ---
 
-## Langages
-* C#
-* JavaScript <!-- .element: class="fragment" -->
-* Java <!-- .element: class="fragment" -->
-* Python <!-- .element: class="fragment" -->
-* PowerShell <!-- .element: class="fragment" -->
+## langages
+c# , java, javascript, python, powershell <!-- .element: class="fragment" -->
 
 note:
-* C# et JavaScript ++
-* C# script
+* c# et javascript ++
+* vs autres faas
 
 ---
 
-## Attributes (annotations)
-* Pour les triggers et les bindings
-* C# et Java
+## attributes ou annotations
+* triggers et bindings  <!-- .element: class="fragment" -->
+* c# et java <!-- .element: class="fragment" -->
+
+note:
+* sinon function.json
 
 ---
 
-## 🌟 IoC
-
-TODO
+## 🌟 ioc
+todo
 
 --- 
 
-# Avantages
+# avantages
 
 ---
 
-## Configuration simplifiée
-* function.json 
-* Variables d'environnement <!-- .element: class="fragment" -->
-* 🌟 Azure Key Vault <!-- .element: class="fragment" -->
+## configuration simplifiée
+* function.json <!-- .element: class="fragment" -->
+* variables d'environnement <!-- .element: class="fragment" -->
+* 🌟 azure key vault <!-- .element: class="fragment" -->
 
 ---
 
-## En local
-* Azure functions tools (CLI) 💡
-* VS, VS Code <!-- .element: class="fragment" -->
-* Maven <!-- .element: class="fragment" -->
-* Emulateurs (Cosmos) <!-- .element: class="fragment" -->
+## en local
+* azure functions tools (cli) 💡 <!-- .element: class="fragment" -->
+* vs ou vs code <!-- .element: class="fragment" -->
+* maven <!-- .element: class="fragment" -->
+* emulateurs (cosmos db) <!-- .element: class="fragment" -->
 
 note:
-* != des autres clouds
-* Resources Azure ? Service bus
+* != autres faas
+* resources azure ? service bus
 
 ---
 
-# Inconvénients 
+# inconvénients 
 
 ---
 
-## Stateless
+## stateless
 
 note:
 * lié au framework
@@ -259,73 +279,77 @@ note:
 
 ---
 
-## Durée limitée
+## durée limitée
 
 note:
 * 10 min max par exécution
 
 ---
 
-## Cold start
+## cold start
+* conteneurs <!-- .element: class="fragment" -->
+* à la demande / éteint si inactif <!-- .element: class="fragment" -->
 
 note:
-* instance démarée automatiquement / éteinte si pas d'activité
+* billing
 * qq secondes, en théorie 💡
 * c^ orchestrateurs
-* adapter sa stratégie 🤔 (polling, 🌟 Azure Front Door) 💡
-* 🌟 Functions premium
+* adapter sa stratégie 🤔 (polling, 🌟 azure front door) 💡
+* 🌟 functions premium
 
 ---
 
-## Manquent...
-* Healthcheck
-* Swagger
+## manquent...
+* healthcheck 💡 <!-- .element: class="fragment" -->
+* swagger 💡 <!-- .element: class="fragment" -->
 
 note:
-* swagger manuel
+* swagger first / swagger manuel
 
 ---
 
-## Networking
-* 🌟 VNET / ASE 💡
-* DNS
+## networking
+* 🌟 vnet / ase 💡 <!-- .element: class="fragment" -->
+* dns <!-- .element: class="fragment" -->
 
 ---
 
-## Pricing
+## pricing
 
 note:
-* Avoir une idée de la volumétrie
+* avoir une idée de la volumétrie
 
 ---
 
-# Ecosystème
+# ecosystème
 
 ---
 
-## Application Insights 💡
+## application insights 💡
 
 ---
 
-## Déploiement
-* Templates ARM 💡
-* Azure DevOps
-    * 🌟 job Functions <!-- .element: class="fragment" -->
+## déploiement
+* templates arm 💡 <!-- .element: class="fragment" -->
+* azure devops <!-- .element: class="fragment" -->
+* 🌟 job functions <!-- .element: class="fragment" -->
 
 note:
 * push depuis poste local 
 
 ---
 
-## Durable functions
-
-* 🌟 Durable Entities <!-- .element: class="fragment" -->
+## durable functions
+* orchestration <!-- .element: class="fragment" -->
+* 🌟 durable entities <!-- .element: class="fragment" -->
 ---
 
-## Logic Apps 
+## logic apps 
 
 ---
 
-# Merci
+# merci
 
-💬
+---
+
+# 💬
