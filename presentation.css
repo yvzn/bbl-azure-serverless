@@ -1,0 +1,20 @@
+:root {
+    --microsoft-gray: #737373;
+    --microsoft-blue: #00a4ef;
+    --microsoft-orange: #ffb900;
+    --microsoft-green: #7fba00;
+    --microsoft-red: #f25022;
+}
+
+.reveal .slides ul 
+{
+    list-style: none
+}
+.reveal .slides li::before
+{
+    content: "\1F5F8";
+    color: var(--microsoft-gray);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5em
+}

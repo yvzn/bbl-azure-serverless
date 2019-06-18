@@ -1,4 +1,6 @@
-# azure serverless
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
+# Azure, serverless
 
 ---
 
@@ -7,7 +9,7 @@
 ---
 
 ## <del>serverless</del>
-less servers
+less servers <!-- .element: class="fragment" -->
 
 note:
 * ↘ de config, de gestion
@@ -68,9 +70,9 @@ note:
 ---
 
 ## offres faas
-* azure functions ⚡ <!-- .element: class="fragment" -->
-* google functions <!-- .element: class="fragment" -->
-* aws lambda <!-- .element: class="fragment" -->
+* Azure functions ⚡ <!-- .element: class="fragment" -->
+* Google functions <!-- .element: class="fragment" -->
+* AWS lambda <!-- .element: class="fragment" -->
 
 note:
 * sous-partie de serverless
@@ -84,7 +86,7 @@ note:
 note:
 * microsoft
 * déclencheur = événement
-* ecosystème azure
+* ecosystème Azure
 
 ---
 
@@ -93,7 +95,7 @@ note:
 
 note:
 * vs vm pré-provisionnée
-* + load balancer
+* load balancer
 * eg black-friday
 
 ---
@@ -119,20 +121,35 @@ note:
 
 ---
 
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
 # use cases ?
 
 ---
 
 ## api http
-microservices <!-- .element: class="fragment" -->
+* microservices <!-- .element: class="fragment" -->
+* web hooks <!-- .element: class="fragment" -->
 
 note:
 * événement = requête http
 
 ---
 
-## todo
-exemple trigger http (java)
+```typescript
+@FunctionName("TriggerStringRoute")
+public HttpResponseMessage run(
+        @HttpTrigger(name = "req", 
+            methods = {HttpMethod.GET}, 
+            authLevel = AuthorizationLevel.ANONYMOUS,
+            route = "trigger/{id}/{name=EMPTY}")
+        HttpRequestMessage<Optional<String>> request,
+        @BindingName("id") String id,
+        @BindingName("name") String name,
+        final ExecutionContext context) {
+
+        }
+```
 
 ---
 
@@ -165,6 +182,8 @@ note:
 
 ---
 
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
 # use cases ?
 
 ---
@@ -187,7 +206,7 @@ exemple trigger service bus (c#)
 ---
 
 ## event sourcing pt. 2
-réagir aux update de resources azure <!-- .element: class="fragment" -->
+réagir aux update de resources Azure <!-- .element: class="fragment" -->
 
 ---
 
@@ -196,6 +215,8 @@ réagir aux update de resources azure <!-- .element: class="fragment" -->
 * entrée et sortie
 
 ---
+
+<!-- .slide: data-background="var(--microsoft-blue)" -->
 
 # opiniated framework
 
@@ -217,7 +238,7 @@ note:
 * bus de messages <!-- .element: class="fragment" -->
 * bases de données <!-- .element: class="fragment" -->
 * key vault <!-- .element: class="fragment" -->
-* azure ad <!-- .element: class="fragment" -->
+* Azure AD <!-- .element: class="fragment" -->
 
 ---
 
@@ -244,6 +265,8 @@ todo
 
 --- 
 
+<!-- .slide: data-background="var(--microsoft-green)" -->
+
 # avantages
 
 ---
@@ -251,21 +274,24 @@ todo
 ## configuration simplifiée
 * function.json <!-- .element: class="fragment" -->
 * variables d'environnement <!-- .element: class="fragment" -->
-* 🌟 azure key vault <!-- .element: class="fragment" -->
+* 🌟 Azure key vault <!-- .element: class="fragment" -->
 
 ---
 
 ## en local
-* azure functions tools (cli) 💡 <!-- .element: class="fragment" -->
-* vs ou vs code <!-- .element: class="fragment" -->
+* Azure functions tools (cli) 💡 <!-- .element: class="fragment" -->
+* VS / VS code <!-- .element: class="fragment" -->
 * maven <!-- .element: class="fragment" -->
-* emulateurs (cosmos db) <!-- .element: class="fragment" -->
+* emulateurs <!-- .element: class="fragment" -->
 
 note:
 * != autres faas
-* resources azure ? service bus
+* Cosmos DB
+* resources Azure ? service bus ?
 
 ---
+
+<!-- .slide: data-background="var(--microsoft-red)" -->
 
 # inconvénients 
 
@@ -287,14 +313,21 @@ note:
 ---
 
 ## cold start
-* conteneurs <!-- .element: class="fragment" -->
-* à la demande / éteint si inactif <!-- .element: class="fragment" -->
 
 note:
+* conteneurs, c^ orchestrateur
+* à la demande / éteint si inactif
 * billing
 * qq secondes, en théorie 💡
-* c^ orchestrateurs
-* adapter sa stratégie 🤔 (polling, 🌟 azure front door) 💡
+
+---
+
+<!-- .slide: data-background="var(--microsoft-red)" -->
+
+## cold start
+
+note:
+* adapter sa stratégie 🤔 (polling, 🌟 Azure front door) 💡
 * 🌟 functions premium
 
 ---
@@ -309,8 +342,8 @@ note:
 ---
 
 ## networking
-* 🌟 vnet / ase 💡 <!-- .element: class="fragment" -->
-* dns <!-- .element: class="fragment" -->
+* 🌟 VNET / ASE 💡 <!-- .element: class="fragment" -->
+* DNS <!-- .element: class="fragment" -->
 
 ---
 
@@ -320,6 +353,8 @@ note:
 * avoir une idée de la volumétrie
 
 ---
+
+<!-- .slide: data-background="var(--microsoft-blue)" -->
 
 # ecosystème
 
@@ -331,7 +366,7 @@ note:
 
 ## déploiement
 * templates arm 💡 <!-- .element: class="fragment" -->
-* azure devops <!-- .element: class="fragment" -->
+* Azure devops <!-- .element: class="fragment" -->
 * 🌟 job functions <!-- .element: class="fragment" -->
 
 note:
@@ -348,8 +383,12 @@ note:
 
 ---
 
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
 # merci
 
 ---
+
+<!-- .slide: data-background="var(--microsoft-blue)" -->
 
 # 💬
