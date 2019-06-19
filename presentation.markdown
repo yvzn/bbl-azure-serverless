@@ -136,25 +136,52 @@ note:
 
 ---
 
-```typescript
-@FunctionName("TriggerStringRoute")
+```typescript <!-- .element: class="fragment" -->
+@FunctionName("hello")
 public HttpResponseMessage run(
-        @HttpTrigger(name = "req", 
-            methods = {HttpMethod.GET}, 
-            authLevel = AuthorizationLevel.ANONYMOUS,
-            route = "trigger/{id}/{name=EMPTY}")
-        HttpRequestMessage<Optional<String>> request,
-        @BindingName("id") String id,
-        @BindingName("name") String name,
-        final ExecutionContext context) {
+    @HttpTrigger(name = "req", methods = HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS)
+    HttpRequestMessage<Optional<String>> request,
+    final ExecutionContext context) {
 
-        }
+    context.getLogger().info("Java HTTP trigger processed a request.");
+
+    String name = request.getQueryParameters().get("name");
+
+    return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+}
 ```
 
 ---
 
-## todo
-exemple trigger http (c#)
+```typescript
+@FunctionName("hello")
+public HttpResponseMessage run(
+    @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS,
+        route = "trigger/{id}/{name=EMPTY}")
+    HttpRequestMessage<Optional<String>> request,
+    @BindingName("id") String id,
+    @BindingName("name") String name,
+    final ExecutionContext context) {
+
+    // ...
+
+}
+```
+---
+
+```csharp
+[FunctionName("hello")]
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] 
+    HttpRequest req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    string name = req.Query["name"];
+
+    return new OkObjectResult($"Hello, {name}");;
+}
+```
 
 ---
 
