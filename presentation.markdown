@@ -9,7 +9,7 @@
 ---
 
 ## <del>serverless</del>
-less servers <!-- .element: class="fragment" -->
+less servers
 
 note:
 * ↘ de config, de gestion
@@ -69,7 +69,7 @@ note:
 
 ---
 
-## offres faas
+## faas ?
 * Azure functions ⚡ <!-- .element: class="fragment" -->
 * Google functions <!-- .element: class="fragment" -->
 * AWS lambda <!-- .element: class="fragment" -->
@@ -80,8 +80,8 @@ note:
 
 ---
 
-## functions 
-⚡ event-driven <!-- .element: class="fragment" -->
+## ⚡ functions 
+* event-driven <!-- .element: class="fragment" -->
 
 note:
 * microsoft
@@ -90,8 +90,9 @@ note:
 
 ---
 
-## functions
-⚡ infinite scaling <!-- .element: class="fragment" -->
+## ⚡ functions
+* event-driven
+* infinite scaling
 
 note:
 * vs vm pré-provisionnée
@@ -111,8 +112,10 @@ schéma montée charge serverless
 
 ---
 
-## functions
-⚡ pay as you go <!-- .element: class="fragment" -->
+## ⚡ functions
+* event-driven
+* infinite scaling 
+* pay as you go <!-- .element: class="fragment" -->
 
 note:
 * 1 million d'exécutions gratuites
@@ -123,7 +126,7 @@ note:
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases ?
+# use cases
 
 ---
 
@@ -167,6 +170,7 @@ public HttpResponseMessage run(
 
 }
 ```
+
 ---
 
 ```csharp
@@ -185,13 +189,43 @@ public static async Task<IActionResult> Run(
 
 ---
 
+## todo
+screenshot mvn run
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
+* utilisez les bindings 💡 <!-- .element: class="fragment" -->
+* utilisez les triggers 💡 <!-- .element: class="fragment" -->
+
+---
+
 ## api http
 back-end pour une spa ? <!-- .element: class="fragment" -->
+
+note:
+* API créé rapidement
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
+utilisez function proxy 💡 <!-- .element: class="fragment" -->
 
 ---
 
 ## todo
 screenshot function proxy 💡
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
+utilisez static web storage 💡 <!-- .element: class="fragment" -->
 
 ---
 
@@ -211,7 +245,7 @@ note:
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases ?
+# use cases
 
 ---
 
@@ -240,6 +274,15 @@ réagir aux update de resources Azure <!-- .element: class="fragment" -->
 ## todo
 * exemple resource bdd (nodejs)
 * entrée et sortie
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+
+## tip
+* utilisez les bindings 💡
+* utilisez les triggers 💡
 
 ---
 
@@ -290,9 +333,19 @@ note:
 ## 🌟 ioc
 todo
 
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
+ddd 💡 <!-- .element: class="fragment" -->
+
+note:
+* séparer logique métier
+
 --- 
 
-<!-- .slide: data-background="var(--microsoft-green)" -->
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 # avantages
 
@@ -318,7 +371,7 @@ note:
 
 ---
 
-<!-- .slide: data-background="var(--microsoft-red)" -->
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 # inconvénients 
 
@@ -329,6 +382,7 @@ note:
 note:
 * lié au framework
 * contournable 🤔 (durable functions, cache partagé) 
+* exemple id vs pays
 
 ---
 
@@ -349,13 +403,33 @@ note:
 
 ---
 
-<!-- .slide: data-background="var(--microsoft-red)" -->
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## cold start
+## tip 
+adapter sa stratégie 💡 <!-- .element: class="fragment" -->
 
 note:
-* adapter sa stratégie 🤔 (polling, 🌟 Azure front door) 💡
+* polling 
+* Azure front door
 * 🌟 functions premium
+
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip 
+utiliser l'effet cache 💡 <!-- .element: class="fragment" -->
+
+---
+
+```csharp
+public class MyFunction
+{
+    private static ServiceWithCostlyStartup service = ...
+
+} 
+```
 
 ---
 
@@ -387,17 +461,22 @@ note:
 
 ---
 
-## application insights 💡
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
+utilisez application insights 💡 <!-- .element: class="fragment" -->
 
 ---
 
-## déploiement
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## tip
 * templates arm 💡 <!-- .element: class="fragment" -->
 * Azure devops <!-- .element: class="fragment" -->
 * 🌟 job functions <!-- .element: class="fragment" -->
 
 note:
-* push depuis poste local 
+* deploy depuis poste local 
 
 ---
 

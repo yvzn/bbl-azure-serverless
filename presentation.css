@@ -12,9 +12,13 @@
 }
 .reveal .slides li::before
 {
-    content: "\1F5F8";
-    color: var(--microsoft-gray);
+    content: "\2023 ";
+    color: var(--microsoft-blue);
     display: inline-block;
     width: 1em;
     margin-left: -1.5em
+}
+
+.reveal .slides .tip li::before {
+    color: white;
 }
