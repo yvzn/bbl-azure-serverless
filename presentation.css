@@ -16,9 +16,16 @@
     color: var(--microsoft-blue);
     display: inline-block;
     width: 1em;
-    margin-left: -1.5em
+    margin-left: -1.5em;
 }
 
 .reveal .slides .tip li::before {
-    color: white;
+    content: "\1F4A1";
+    margin-left: -1.75em;
+    padding-right: .25em;
+}
+
+.reveal section img {
+    border: none;
+    box-shadow: none;
 }

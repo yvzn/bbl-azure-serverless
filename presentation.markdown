@@ -27,7 +27,7 @@ note:
 ---
 
 ## on premise
-* hardware <!-- .element: class="fragment" -->
+* hardware 👨‍💻 <!-- .element: class="fragment" -->
 
 note:
 * avantages vs. inconvénients
@@ -37,8 +37,8 @@ note:
 ---
 
 ## iaas
-* <del>hardware</del>
-* os <!-- .element: class="fragment" -->
+* hardware ⛅
+* os 👨‍💻<!-- .element: class="fragment" -->
 
 note:
 * pannes logicielles
@@ -47,9 +47,9 @@ note:
 ---
 
 ## paas
-* <del>hardware</del>
-* <del>os</del>
-* framework <!-- .element: class="fragment" -->
+* hardware ⛅
+* os ⛅
+* framework 👩‍💻 <!-- .element: class="fragment" -->
 
 note:
 * montées de version
@@ -59,17 +59,17 @@ note:
 ---
 
 ## faas
-* <del>hardware</del> 
-* <del>os</del>
-* <del>framework</del>
-* function <!-- .element: class="fragment" -->
+* hardware ⛅ 
+* os ⛅
+* framework ⛅
+* function 👩‍💻 <!-- .element: class="fragment" -->
 
 note:
 * code
 
 ---
 
-## faas ?
+## plateformes
 * Azure functions ⚡ <!-- .element: class="fragment" -->
 * Google functions <!-- .element: class="fragment" -->
 * AWS lambda <!-- .element: class="fragment" -->
@@ -84,9 +84,9 @@ note:
 * event-driven <!-- .element: class="fragment" -->
 
 note:
-* microsoft
-* déclencheur = événement
+* Microsoft
 * ecosystème Azure
+* déclencheur = événement
 
 ---
 
@@ -139,14 +139,64 @@ note:
 
 ---
 
-```typescript <!-- .element: class="fragment" -->
+```typescript 
+public class Function {
+
+    public ... run(...)
+    {
+        ...
+    }
+}
+```
+
+---
+
+```typescript 
+...
 @FunctionName("hello")
+public ... run(...) {
+    ...
+}
+```
+
+https:// .... .azurewebsites.net/api/<mark>hello</mark>
+
+---
+
+```typescript 
+...
+public HttpResponseMessage run(
+    ...
+    HttpRequestMessage<Optional<String>> request
+    ...) {
+
+    ...
+}
+```
+
+---
+
+```typescript 
+...
 public HttpResponseMessage run(
     @HttpTrigger(name = "req", methods = HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS)
     HttpRequestMessage<Optional<String>> request,
-    final ExecutionContext context) {
+    ...) {
 
-    context.getLogger().info("Java HTTP trigger processed a request.");
+    ...
+}
+```
+
+---
+
+```typescript 
+...
+public HttpResponseMessage run(
+    ...
+    HttpRequestMessage<Optional<String>> request,
+    ...) {
+
+    ...
 
     String name = request.getQueryParameters().get("name");
 
@@ -156,7 +206,69 @@ public HttpResponseMessage run(
 
 ---
 
+```typescript 
+...
+public HttpResponseMessage run(
+    ...
+    final ExecutionContext context) {
+
+    context.getLogger().info("Java HTTP trigger processed a request.");
+
+    ...
+}
+```
+
+---
+
+```typescript 
+public class Function {
+    @FunctionName("hello")
+    public HttpResponseMessage run(
+        @HttpTrigger(name = "req", methods = HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS)
+        HttpRequestMessage<Optional<String>> request,
+        final ExecutionContext context) {
+
+        context.getLogger().info("Java HTTP trigger processed a request.");
+
+        String name = request.getQueryParameters().get("name");
+
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+    }
+}
+```
+
+---
+
+## function.json
+
+```json
+{
+  ...
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "name": "req",
+      "direction": "in",
+      "authLevel": "anonymous",
+      "methods": [ "get" ]
+    },
+    {
+      "type": "http",
+      "name": "$return",
+      "direction": "out"
+    }
+  ]
+  ...
+}
+```
+
+note:
+* NodeJs, python
+
+---
+
 ```typescript
+...
 @FunctionName("hello")
 public HttpResponseMessage run(
     @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS,
@@ -164,26 +276,29 @@ public HttpResponseMessage run(
     HttpRequestMessage<Optional<String>> request,
     @BindingName("id") String id,
     @BindingName("name") String name,
-    final ExecutionContext context) {
+    ...) {
 
-    // ...
+    ...
 
 }
 ```
+https:// .... .azurewebsites.net/api/trigger/<mark>1234</mark>/<mark>test</mark>
 
 ---
 
 ```csharp
-[FunctionName("hello")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] 
-    HttpRequest req, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+public class Function {
+    [FunctionName("hello")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] 
+        HttpRequest req, ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
 
-    string name = req.Query["name"];
+        string name = req.Query["name"];
 
-    return new OkObjectResult($"Hello, {name}");;
+        return new OkObjectResult($"Hello, {name}");;
+    }
 }
 ```
 
@@ -194,16 +309,24 @@ screenshot mvn run
 
 ---
 
+## todo
+* intégration spring 
+
+---
+
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-* utilisez les bindings 💡 <!-- .element: class="fragment" -->
-* utilisez les triggers 💡 <!-- .element: class="fragment" -->
+* bindings
+* triggers <!-- .element: class="fragment" -->
+
+note:
+* automatisation
+* vs utilisation manuelle 
 
 ---
 
 ## api http
-back-end pour une spa ? <!-- .element: class="fragment" -->
+back-end pour une spa <!-- .element: class="fragment" -->
 
 note:
 * API créé rapidement
@@ -212,25 +335,41 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-utilisez function proxy 💡 <!-- .element: class="fragment" -->
+* function proxy
 
 ---
 
 ## todo
-screenshot function proxy 💡
+screenshot function proxy
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-utilisez static web storage 💡 <!-- .element: class="fragment" -->
+* static web storage 
 
 ---
 
 ## todo
-screenshot static web storage 💡
+screenshot static web storage
+
+---
+
+![architecture web app serverless](https://docs.microsoft.com/fr-fr/azure/architecture/reference-architectures/serverless/_images/serverless-web-app.png)
+
+note:
+* architectures référence azure
+
+---
+
+## full serverless ?
+
+---
+
+## todo
+![architecture AKS and ACI complexe](resource/complex.svg)
+
+IMA + Netflix
 
 ---
 
@@ -238,7 +377,6 @@ screenshot static web storage 💡
 loterie bons de réduction <!-- .element: class="fragment" -->
 
 note:
-* != full serverless/microservices 💡
 * un fonctionnalité avec bcp de trafic ?
 
 ---
@@ -261,8 +399,53 @@ schéma event sourcing
 
 ---
 
-## todo
-exemple trigger service bus (c#)
+```csharp
+...
+public static void Run(
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
+    string myQueueItem,
+    ...
+```
+
+---
+
+```csharp
+...
+public static void Run(
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
+    Message myQueueMessage,
+    ...
+```
+
+---
+
+
+```csharp
+...
+public static void Run(
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
+    string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string correlationId,
+    ...
+```
+
+note:
+* ack vs. exceptions
+* retries
+
+---
+
+```csharp
+...
+[return: ServiceBus("myqueue", Connection = "ServiceBusConnection")]
+public static string Run(...)
+{
+    ...
+    return "Hello";
+}
+```
 
 ---
 
@@ -279,10 +462,11 @@ réagir aux update de resources Azure <!-- .element: class="fragment" -->
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
+* bindings
+* triggers
 
-## tip
-* utilisez les bindings 💡
-* utilisez les triggers 💡
+note:
+* vs clients CosmosDB, PostgreSQL, etc.
 
 ---
 
@@ -330,22 +514,21 @@ note:
 
 ---
 
-## 🌟 ioc
+## ioc 🌟
 todo
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-ddd 💡 <!-- .element: class="fragment" -->
+* ddd 
 
 note:
 * séparer logique métier
 
 --- 
 
-<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+<!-- .slide:  data-background="var(--microsoft-blue)" -->
 
 # avantages
 
@@ -354,7 +537,7 @@ note:
 ## configuration simplifiée
 * function.json <!-- .element: class="fragment" -->
 * variables d'environnement <!-- .element: class="fragment" -->
-* 🌟 Azure key vault <!-- .element: class="fragment" -->
+* Azure key vault 🌟 <!-- .element: class="fragment" -->
 
 ---
 
@@ -371,7 +554,7 @@ note:
 
 ---
 
-<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+<!-- .slide:  data-background="var(--microsoft-blue)" -->
 
 # inconvénients 
 
@@ -405,21 +588,19 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip 
-adapter sa stratégie 💡 <!-- .element: class="fragment" -->
+* adapter sa stratégie 
 
 note:
 * polling 
 * Azure front door
-* 🌟 functions premium
+* functions premium 🌟
 
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip 
-utiliser l'effet cache 💡 <!-- .element: class="fragment" -->
+* utiliser l'effet cache 
 
 ---
 
@@ -443,7 +624,7 @@ note:
 ---
 
 ## networking
-* 🌟 VNET / ASE 💡 <!-- .element: class="fragment" -->
+* VNET / ASE 🌟 <!-- .element: class="fragment" -->
 * DNS <!-- .element: class="fragment" -->
 
 ---
@@ -463,26 +644,28 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-utilisez application insights 💡 <!-- .element: class="fragment" -->
+* Application Insights <!-- .element: class="fragment" -->
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-## tip
-* templates arm 💡 <!-- .element: class="fragment" -->
+* templates arm <!-- .element: class="fragment" -->
 * Azure devops <!-- .element: class="fragment" -->
-* 🌟 job functions <!-- .element: class="fragment" -->
+* job functions 🌟 <!-- .element: class="fragment" -->
 
 note:
-* deploy depuis poste local 
+* vs deploy depuis poste local 
 
 ---
 
 ## durable functions
 * orchestration <!-- .element: class="fragment" -->
-* 🌟 durable entities <!-- .element: class="fragment" -->
+* durable entities 🌟 <!-- .element: class="fragment" -->
+
+note:
+* stateful ?
+
 ---
 
 ## logic apps 
