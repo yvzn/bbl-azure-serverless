@@ -1,15 +1,24 @@
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# Azure, serverless
+# Azure serverless ...
+
+---
+
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
+# ... et dans la vraie vie ?
 
 ---
 
 ## serverless
 
+note:
+* nom mal choisi
+
 ---
 
-## <del>serverless</del>
-less servers
+## less servers
+<del>serverless</del>
 
 note:
 * ↘ de config, de gestion
@@ -18,7 +27,7 @@ note:
 
 ---
 
-## serveurs  ?
+## servers  ?
 
 note:
 * c^ déployer une application
@@ -304,12 +313,25 @@ public class Function {
 
 ---
 
-## todo
-screenshot mvn run
+```bash
+mvn archetype:generate 
+	"-DarchetypeGroupId=com.microsoft.azure" 
+	"-DarchetypeArtifactId=azure-functions-archetype"
+```
+
+---
+
+```bash
+mvn clean package 
+mvn azure-functions:run
+```
 
 ---
 
 ## todo
+screenshot maven run
+
+note:
 * intégration spring 
 
 ---
@@ -325,8 +347,13 @@ note:
 
 ---
 
-## api http
-back-end pour une spa <!-- .element: class="fragment" -->
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
+# use cases
+
+---
+
+## back-end pour une spa
 
 note:
 * API créé rapidement
@@ -362,21 +389,23 @@ note:
 
 ---
 
-## full serverless ?
-
----
-
-## todo
 ![architecture AKS and ACI complexe](resource/complex.svg)
 
-IMA + Netflix
+---
+
+![architecture Netflix](https://pbs.twimg.com/media/DUyIfFtX0AAoZGz.jpg)
+
+note:
+* risque complexité
 
 ---
 
-## api http
-loterie bons de réduction <!-- .element: class="fragment" -->
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+* migrer partiellement
 
 note:
+* loterie bons de réduction
 * un fonctionnalité avec bcp de trafic ?
 
 ---
@@ -387,15 +416,13 @@ note:
 
 ---
 
-## event sourcing pt. 1
+## transformations de données
+* http ↦ queue
+* queue ↦ http
+* queue ↦ queue
 
 note:
 * volumétrie non connues à l'avance
-
----
-
-## todo
-schéma event sourcing
 
 ---
 
@@ -418,7 +445,6 @@ public static void Run(
 ```
 
 ---
-
 
 ```csharp
 ...
@@ -449,14 +475,50 @@ public static string Run(...)
 
 ---
 
-## event sourcing pt. 2
-réagir aux update de resources Azure <!-- .element: class="fragment" -->
+<!-- .slide: data-background="var(--microsoft-blue)" -->
+
+# use cases
 
 ---
 
 ## todo
-* exemple resource bdd (nodejs)
-* entrée et sortie
+schéma event sourcing
+
+---
+
+## écrire dans une base
+
+---
+
+```csharp
+...
+[return: Table("MyTable", Connection = "StorageConnectionAppSetting")]
+public static MyObject Run(...) {
+    ...
+    return new MyObject { Name = "Test", Id = Guid.NewGuid(), };
+}
+```
+
+---
+
+## lire depuis une base
+
+---
+
+```csharp
+...
+public static void Run(
+    [Table("MyTable", "MyPartition")] IQueryable<MyObject> pocos,
+    ...) {
+
+}
+```
+
+---
+
+## event sourcing
+* CosmosDB <!-- .element: class="fragment" -->
+* change feed processor <!-- .element: class="fragment" -->
 
 ---
 
@@ -515,7 +577,24 @@ note:
 ---
 
 ## ioc 🌟
-todo
+
+note:
+* csharp
+* spring
+
+---
+
+```csharp
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+...
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddHttpClient();
+        builder.Services.AddSingleton(...);
+        ...
+```
 
 ---
 
@@ -525,6 +604,7 @@ todo
 
 note:
 * séparer logique métier
+* functions = framework
 
 --- 
 
@@ -541,20 +621,30 @@ note:
 
 ---
 
+## todo
+screenshot ecran config
+
+---
+
 ## en local
-* Azure functions tools (cli) 💡 <!-- .element: class="fragment" -->
+* Azure functions tools (cli) <!-- .element: class="fragment" -->
 * VS / VS code <!-- .element: class="fragment" -->
 * maven <!-- .element: class="fragment" -->
 * emulateurs <!-- .element: class="fragment" -->
 
 note:
-* != autres faas
+* != autres faas 💡
 * Cosmos DB
 * resources Azure ? service bus ?
 
 ---
 
-<!-- .slide:  data-background="var(--microsoft-blue)" -->
+## todo
+screenshot Azure DevOps
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-red)" -->
 
 # inconvénients 
 
@@ -565,14 +655,14 @@ note:
 note:
 * lié au framework
 * contournable 🤔 (durable functions, cache partagé) 
-* exemple id vs pays
+* exemple plages id vs pays
 
 ---
 
 ## durée limitée
 
 note:
-* 10 min max par exécution
+* max par exécution
 
 ---
 
@@ -614,9 +704,11 @@ public class MyFunction
 
 ---
 
+<!-- .slide:  data-background="var(--microsoft-orange)" class="tip" -->
+
 ## manquent...
-* healthcheck 💡 <!-- .element: class="fragment" -->
-* swagger 💡 <!-- .element: class="fragment" -->
+* healthcheck <!-- .element: class="fragment" -->
+* swagger <!-- .element: class="fragment" -->
 
 note:
 * swagger first / swagger manuel
@@ -644,13 +736,13 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* Application Insights <!-- .element: class="fragment" -->
+* Application Insights 
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* templates arm <!-- .element: class="fragment" -->
+* templates ARM 
 * Azure devops <!-- .element: class="fragment" -->
 * job functions 🌟 <!-- .element: class="fragment" -->
 
