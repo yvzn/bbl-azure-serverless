@@ -110,14 +110,32 @@ note:
 
 ---
 
-## todo
-schéma montée charge vm
+![montée en charge](resource/load_vs_capacity001.png)
+
 
 ---
 
+![montée en charge](resource/load_vs_capacity003.png)
 
-## todo
-schéma montée charge serverless
+
+---
+
+![montée en charge](resource/load_vs_capacity005.png)
+
+
+---
+
+![montée en charge](resource/load_vs_capacity007.png)
+
+
+---
+
+![montée en charge](resource/load_vs_capacity009.png)
+
+
+---
+
+![montée en charge](resource/load_vs_capacity011.png)
 
 ---
 
@@ -135,7 +153,7 @@ note:
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases
+# use case 1
 
 ---
 
@@ -331,8 +349,7 @@ mvn azure-functions:run
 
 ---
 
-## todo
-screenshot maven run
+![video mvn azure-functions:run](resource/mvn_azure_functions_run.png)
 
 note:
 * intégration spring 
@@ -360,7 +377,7 @@ note:
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases
+# use case 2
 
 ---
 
@@ -377,19 +394,23 @@ note:
 
 ---
 
-## todo
-screenshot function proxy
+![définition function proxy](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-create-vnet/create-proxy.png)
+
+note:
+* API Management
+* Azure front door 🌟
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* static web storage 
+* [static web on blob storage]
+
+note:
 
 ---
 
-## todo
-screenshot static web storage
+![static website on azure blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
 ---
 
@@ -400,7 +421,11 @@ note:
 
 ---
 
-![architecture AKS and ACI complexe](resource/complex.svg)
+## full serverless ?
+
+---
+
+![architecture complexe](resource/complex.svg)
 
 note:
 * risque complexité
@@ -423,7 +448,7 @@ note:
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases
+# use case 3
 
 ---
 
@@ -492,12 +517,15 @@ public static string Run(...)
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# use cases
+# use case 4
 
 ---
 
-## todo
-schéma event sourcing
+## event sourcing
+
+---
+
+![schema event sourcing](resource/event_sourcing.svg)
 
 ---
 
@@ -537,6 +565,10 @@ public static void Run(
 ## event sourcing
 * CosmosDB <!-- .element: class="fragment" -->
 * change feed processor <!-- .element: class="fragment" -->
+
+---
+
+![schema event sourcing](resource/event_sourcing.svg)
 
 ---
 
@@ -633,7 +665,10 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-blue)" -->
 
-# avantages
+# ⚡ = 😎
+
+note:
+* avantages
 
 ---
 
@@ -643,8 +678,12 @@ note:
 
 ---
 
-## todo
-screenshot ecran config
+![ecran app settings](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+
+---
+
+
+![ecran platform features](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
 ---
 
@@ -662,7 +701,10 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-red)" -->
 
-# inconvénients 
+# ⚡ = 🤨 
+
+note:
+* inconvénients
 
 ---
 
@@ -682,7 +724,7 @@ note:
 
 ---
 
-## cold start
+## cold start 😭
 
 note:
 * conteneurs, c^ orchestrateur
@@ -698,7 +740,7 @@ note:
 
 note:
 * polling 
-* Azure front door
+* Azure front door 🌟
 * functions premium 🌟
 
 ---
@@ -760,15 +802,18 @@ note:
 
 ---
 
-## todo
-screenshot App Insights
+![Application map in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/opencensus-python/application-map.png)
+
+---
+
+![Transaction diagnostics in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/transaction-diagnostics/searchresults.png)
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* templates ARM 
-* Azure devops <!-- .element: class="fragment" -->
+* Azure DevOps 
+* templates ARM <!-- .element: class="fragment" -->
 * job functions 🌟 <!-- .element: class="fragment" -->
 
 note:
@@ -776,8 +821,7 @@ note:
 
 ---
 
-## todo
-screenshot Azure DevOps
+![Nouveaux jobs Azure DevOps functions](https://docs.microsoft.com/en-us/azure/azure-functions/media/functions-how-to-azure-devops/build-templates.png)
 
 ---
 
