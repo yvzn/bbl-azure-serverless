@@ -6,7 +6,7 @@
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-# ... et dans la vraie vie ?
+## ... et dans la vraie vie ?
 
 ---
 
@@ -187,7 +187,7 @@ public HttpResponseMessage run(
 
 ```typescript 
 ...
-public HttpResponseMessage run(
+public ... run(
     @HttpTrigger(name = "req", methods = HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS)
     HttpRequestMessage<Optional<String>> request,
     ...) {
@@ -195,6 +195,9 @@ public HttpResponseMessage run(
     ...
 }
 ```
+
+note:
+* annotations sur return
 
 ---
 
@@ -336,6 +339,14 @@ note:
 
 ---
 
+## function app
+
+note:
+* mise à jour simultané
+* slots
+
+---
+
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 * bindings
@@ -391,12 +402,12 @@ note:
 
 ![architecture AKS and ACI complexe](resource/complex.svg)
 
+note:
+* risque complexité
+
 ---
 
 ![architecture Netflix](https://pbs.twimg.com/media/DUyIfFtX0AAoZGz.jpg)
-
-note:
-* risque complexité
 
 ---
 
@@ -417,11 +428,12 @@ note:
 ---
 
 ## transformations de données
-* http ↦ queue
-* queue ↦ http
-* queue ↦ queue
+* http ↦ queue <!-- .element: class="fragment" -->
+* queue ↦ http <!-- .element: class="fragment" -->
+* queue ↦ queue <!-- .element: class="fragment" -->
 
 note:
+* interfaces entre systèmes
 * volumétrie non connues à l'avance
 
 ---
@@ -434,6 +446,10 @@ public static void Run(
     ...
 ```
 
+note:
+* ack vs. exceptions
+* retries
+
 ---
 
 ```csharp
@@ -443,6 +459,9 @@ public static void Run(
     Message myQueueMessage,
     ...
 ```
+
+note:
+* objet et metadonnées
 
 ---
 
@@ -456,10 +475,6 @@ public static void Run(
     string correlationId,
     ...
 ```
-
-note:
-* ack vs. exceptions
-* retries
 
 ---
 
@@ -499,6 +514,9 @@ public static MyObject Run(...) {
 }
 ```
 
+note:
+* Azure table storage
+
 ---
 
 ## lire depuis une base
@@ -537,7 +555,8 @@ note:
 # opiniated framework
 
 note:
-* déclarations simplifiées
+* cadre dirigiste
+* simplifie le dév
 
 ---
 
@@ -559,7 +578,11 @@ note:
 ---
 
 ## langages
-c# , java, javascript, python, powershell <!-- .element: class="fragment" -->
+* c# <!-- .element: class="fragment" --> 
+* java <!-- .element: class="fragment" -->
+* nodejs <!-- .element: class="fragment" -->
+* python <!-- .element: class="fragment" -->
+* powershell <!-- .element: class="fragment" -->
 
 note:
 * c# et javascript ++
@@ -600,7 +623,7 @@ public class Startup : FunctionsStartup
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* ddd 
+* DDD 
 
 note:
 * séparer logique métier
@@ -615,7 +638,6 @@ note:
 ---
 
 ## configuration simplifiée
-* function.json <!-- .element: class="fragment" -->
 * variables d'environnement <!-- .element: class="fragment" -->
 * Azure key vault 🌟 <!-- .element: class="fragment" -->
 
@@ -636,12 +658,6 @@ note:
 * != autres faas 💡
 * Cosmos DB
 * resources Azure ? service bus ?
-
----
-
-## todo
-screenshot Azure DevOps
-
 ---
 
 <!-- .slide:  data-background="var(--microsoft-red)" -->
@@ -685,12 +701,15 @@ note:
 * Azure front door
 * functions premium 🌟
 
-
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* utiliser l'effet cache 
+* effet cache 
+
+note:
+* durée limitée
+* en mémoire pendant cette durée
 
 ---
 
@@ -716,8 +735,8 @@ note:
 ---
 
 ## networking
-* VNET / ASE 🌟 <!-- .element: class="fragment" -->
-* DNS <!-- .element: class="fragment" -->
+* vnet / ase 🌟 <!-- .element: class="fragment" -->
+* dns <!-- .element: class="fragment" -->
 
 ---
 
@@ -725,6 +744,7 @@ note:
 
 note:
 * avoir une idée de la volumétrie
+* complexe
 
 ---
 
@@ -740,6 +760,11 @@ note:
 
 ---
 
+## todo
+screenshot App Insights
+
+---
+
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 * templates ARM 
@@ -748,6 +773,11 @@ note:
 
 note:
 * vs deploy depuis poste local 
+
+---
+
+## todo
+screenshot Azure DevOps
 
 ---
 
