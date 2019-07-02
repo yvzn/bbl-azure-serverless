@@ -21,25 +21,33 @@ note:
 <del>serverless</del>
 
 note:
-* ↘ de config, de gestion
+* ↘ config, gestion
 * managé
 * focus sur le code
 
 ---
 
 ## servers  ?
+* hardware <!-- .element: class="fragment" -->
+* os <!-- .element: class="fragment" -->
+* framework <!-- .element: class="fragment" -->
+* code <!-- .element: class="fragment" -->
 
 note:
-* c^ déployer une application
-* je gère, je m'occupe
+* de quoi on parle ?
+* déployer mon app
+* je gère, je m'en occupe
 
 ---
 
 ## on premise
-* hardware 👨‍💻 <!-- .element: class="fragment" -->
+* hardware 👨‍💻 
+* os 👩‍💻 <!-- .element: class=" faded" -->
+* framework 👩‍💻 <!-- .element: class=" faded" -->
+* code 👩‍💻 <!-- .element: class=" faded" -->
 
 note:
-* avantages vs. inconvénients
+* billing one shot
 * pannes matérielles
 * réseau (firewall, fai)
 
@@ -47,23 +55,25 @@ note:
 
 ## iaas
 * hardware ⛅
-* os 👨‍💻<!-- .element: class="fragment" -->
+* os 👨‍💻
+* framework 👨‍💻 <!-- .element: class=" faded" -->
+* code 👨‍💻 <!-- .element: class=" faded" -->
 
 note:
+* scalabilité
 * pannes logicielles
-* mises à jour
 
 ---
 
 ## paas
 * hardware ⛅
 * os ⛅
-* framework 👩‍💻 <!-- .element: class="fragment" -->
+* framework 👩‍💻 
+* code 👩‍💻 <!-- .element: class=" faded" -->
 
 note:
 * montées de version
-* archi logicielles (bases, messaging, etc.)
-* scalabilité
+* archi logicielle (bases, messaging, etc.)
 
 ---
 
@@ -71,14 +81,11 @@ note:
 * hardware ⛅ 
 * os ⛅
 * framework ⛅
-* function 👩‍💻 <!-- .element: class="fragment" -->
-
-note:
-* code
+* code 👩‍💻 
 
 ---
 
-## plateformes
+## plateformes faas
 * Azure functions ⚡ <!-- .element: class="fragment" -->
 * Google functions <!-- .element: class="fragment" -->
 * AWS lambda <!-- .element: class="fragment" -->
@@ -90,11 +97,18 @@ note:
 ---
 
 ## ⚡ functions 
-* event-driven <!-- .element: class="fragment" -->
 
 note:
 * Microsoft
 * ecosystème Azure
+* déclencheur = événement
+
+---
+
+## ⚡ functions 
+* event-driven 
+
+note:
 * déclencheur = événement
 
 ---
@@ -105,7 +119,7 @@ note:
 
 note:
 * vs vm pré-provisionnée
-* load balancer
+* load balancer auto
 * eg black-friday
 
 ---
@@ -122,6 +136,8 @@ note:
 
 ![montée en charge](resource/load_vs_capacity005.png)
 
+note:
+* "latence"
 
 ---
 
@@ -137,6 +153,10 @@ note:
 
 ![montée en charge](resource/load_vs_capacity011.png)
 
+note:
+* automatique
+* managé
+
 ---
 
 ## ⚡ functions
@@ -145,9 +165,10 @@ note:
 * pay as you go <!-- .element: class="fragment" -->
 
 note:
-* 1 million d'exécutions gratuites
 * 0 exécution = 0€
 * exemple uat, testing
+* free tier 1 million
+* reste stockage + bande passante
 
 ---
 
@@ -187,6 +208,9 @@ public ... run(...) {
 ```
 
 https:// .... .azurewebsites.net/api/<mark>hello</mark>
+
+note:
+* métaprogrammation
 
 ---
 
@@ -293,7 +317,8 @@ public class Function {
 ```
 
 note:
-* NodeJs, python
+* généré: c#, java
+* à écrire: nodejs, python
 
 ---
 
@@ -314,6 +339,9 @@ public HttpResponseMessage run(
 ```
 https:// .... .azurewebsites.net/api/trigger/<mark>1234</mark>/<mark>test</mark>
 
+note:
+* route parameters
+
 ---
 
 ```csharp
@@ -331,6 +359,9 @@ public class Function {
     }
 }
 ```
+
+note:
+* API plus simple
 
 ---
 
@@ -352,15 +383,18 @@ mvn azure-functions:run
 ![video mvn azure-functions:run](resource/mvn_azure_functions_run.png)
 
 note:
-* intégration spring 
+* spring cloud functions
 
 ---
 
 ## function app
 
+* https://<mark> .... </mark>.azurewebsites.net/api/hello 
+
 note:
-* mise à jour simultané
-* slots
+* groupement logique
+* mises à jour simultanées
+* paramétrage commun
 
 ---
 
@@ -370,8 +404,7 @@ note:
 * triggers <!-- .element: class="fragment" -->
 
 note:
-* automatisation
-* vs utilisation manuelle 
+* automatisation vs code manuel 
 
 ---
 
@@ -381,7 +414,7 @@ note:
 
 ---
 
-## back-end pour une spa
+## back-end + spa
 
 note:
 * API créé rapidement
@@ -404,9 +437,8 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* [static web on blob storage]
+* static web on blob storage
 
-note:
 
 ---
 
@@ -428,7 +460,7 @@ note:
 ![architecture complexe](resource/complex.svg)
 
 note:
-* risque complexité
+* déplacement complexité
 
 ---
 
@@ -439,10 +471,12 @@ note:
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 * migrer partiellement
+* migrer progressivement <!-- .element: class="fragment" -->
+
 
 note:
+* micro-fonctionnalité avec peut-être bcp de trafic
 * loterie bons de réduction
-* un fonctionnalité avec bcp de trafic ?
 
 ---
 
@@ -459,7 +493,13 @@ note:
 
 note:
 * interfaces entre systèmes
+* extensibilité
 * volumétrie non connues à l'avance
+
+---
+
+
+## lire depuis une queue
 
 ---
 
@@ -474,6 +514,8 @@ public static void Run(
 note:
 * ack vs. exceptions
 * retries
+* poison queue
+* string
 
 ---
 
@@ -487,6 +529,7 @@ public static void Run(
 
 note:
 * objet et metadonnées
+* connection string (vs. hard coded)
 
 ---
 
@@ -500,6 +543,11 @@ public static void Run(
     string correlationId,
     ...
 ```
+
+---
+
+
+## écrire dans une queue
 
 ---
 
@@ -560,15 +608,25 @@ public static void Run(
 }
 ```
 
+note:
+* méthodes IQueryable
+* CloudTable
+
 ---
 
 ## event sourcing
 * CosmosDB <!-- .element: class="fragment" -->
 * change feed processor <!-- .element: class="fragment" -->
 
+note:
+* c^ trigger
+
 ---
 
 ![schema event sourcing](resource/event_sourcing.svg)
+
+note:
+* hot/cold
 
 ---
 
@@ -604,8 +662,11 @@ note:
 ## resources = bindings
 * bus de messages <!-- .element: class="fragment" -->
 * bases de données <!-- .element: class="fragment" -->
-* key vault <!-- .element: class="fragment" -->
-* Azure AD <!-- .element: class="fragment" -->
+* SignalR <!-- .element: class="fragment" -->
+* etc. <!-- .element: class="fragment" -->
+
+note:
+* input binding / output
 
 ---
 
@@ -631,7 +692,7 @@ note:
 
 ---
 
-## ioc 🌟
+## IoC + DI 🌟
 
 note:
 * csharp
@@ -651,6 +712,9 @@ public class Startup : FunctionsStartup
         ...
 ```
 
+note:
+* Startup .Net core
+
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
@@ -661,7 +725,7 @@ note:
 * séparer logique métier
 * functions = framework
 
---- 
+---
 
 <!-- .slide:  data-background="var(--microsoft-blue)" -->
 
@@ -675,6 +739,7 @@ note:
 ## configuration simplifiée
 * variables d'environnement <!-- .element: class="fragment" -->
 * Azure key vault 🌟 <!-- .element: class="fragment" -->
+* local.settings.json <!-- .element: class="fragment" -->
 
 ---
 
@@ -689,14 +754,14 @@ note:
 
 ## en local
 * Azure functions tools (cli) <!-- .element: class="fragment" -->
-* VS / VS code <!-- .element: class="fragment" -->
-* maven <!-- .element: class="fragment" -->
+* debugging <!-- .element: class="fragment" -->
+* intégration maven / dotnet <!-- .element: class="fragment" -->
 * emulateurs <!-- .element: class="fragment" -->
 
 note:
-* != autres faas 💡
+* != autres faas 💡 (docker)
 * Cosmos DB
-* resources Azure ? service bus ?
+
 ---
 
 <!-- .slide:  data-background="var(--microsoft-red)" -->
@@ -712,7 +777,7 @@ note:
 
 note:
 * lié au framework
-* contournable 🤔 (durable functions, cache partagé) 
+* contournements 🤔 (cache partagé) 
 * exemple plages id vs pays
 
 ---
@@ -721,6 +786,7 @@ note:
 
 note:
 * max par exécution
+* configurable
 
 ---
 
@@ -747,18 +813,18 @@ note:
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
-* effet cache 
+* effet mémoire 
 
 note:
-* durée limitée
-* en mémoire pendant cette durée
+* durée limitée ☹
+* mais en mémoire pendant cette durée
 
 ---
 
 ```csharp
 public class MyFunction
 {
-    private static ServiceWithCostlyStartup service = ...
+    private static ClassWithCostlyInit service = ...
 
 } 
 ```
@@ -772,6 +838,7 @@ public class MyFunction
 * swagger <!-- .element: class="fragment" -->
 
 note:
+* vs. actuator ou .Net core
 * swagger first / swagger manuel
 
 ---
@@ -786,7 +853,7 @@ note:
 
 note:
 * avoir une idée de la volumétrie
-* complexe
+* vs. prix fixe mensuel instance vm
 
 ---
 
@@ -804,20 +871,28 @@ note:
 
 ![Application map in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/opencensus-python/application-map.png)
 
+note:
+* application map
+
 ---
 
 ![Transaction diagnostics in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/transaction-diagnostics/searchresults.png)
+
+note:
+* transaction diagnostics
+* cross micro-services
 
 ---
 
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 * Azure DevOps 
-* templates ARM <!-- .element: class="fragment" -->
 * job functions 🌟 <!-- .element: class="fragment" -->
+* templates ARM <!-- .element: class="fragment" -->
 
 note:
 * vs deploy depuis poste local 
+* yaml / json
 
 ---
 
@@ -835,6 +910,31 @@ note:
 ---
 
 ## logic apps 
+
+---
+
+## Azure 
+
+note:
+* Active Directory
+* CosmosDB
+* APIM / Azure Front Door
+
+---
+
+<!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
+
+## Conclusion
+* focus sur le code
+* prise en main facilitée
+* évolue rapidement
+* contraintes
+
+note:
+* qualité du code
+* aller sur cloud pour pas cher
+* pas tous les uses cases
+
 
 ---
 
