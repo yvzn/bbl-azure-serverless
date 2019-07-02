@@ -42,9 +42,9 @@ note:
 
 ## on premise
 * hardware 👨‍💻 
-* os 👩‍💻 <!-- .element: class=" faded" -->
-* framework 👩‍💻 <!-- .element: class=" faded" -->
-* code 👩‍💻 <!-- .element: class=" faded" -->
+* os 👩‍💻 <!-- .element: class="faded" -->
+* framework 👩‍💻 <!-- .element: class="faded" -->
+* code 👩‍💻 <!-- .element: class="faded" -->
 
 note:
 * billing one shot
@@ -56,8 +56,8 @@ note:
 ## iaas
 * hardware ⛅
 * os 👨‍💻
-* framework 👨‍💻 <!-- .element: class=" faded" -->
-* code 👨‍💻 <!-- .element: class=" faded" -->
+* framework 👨‍💻 <!-- .element: class="faded" -->
+* code 👨‍💻 <!-- .element: class="faded" -->
 
 note:
 * scalabilité
@@ -69,7 +69,7 @@ note:
 * hardware ⛅
 * os ⛅
 * framework 👩‍💻 
-* code 👩‍💻 <!-- .element: class=" faded" -->
+* code 👩‍💻 <!-- .element: class="faded" -->
 
 note:
 * montées de version
@@ -156,6 +156,7 @@ note:
 note:
 * automatique
 * managé
+* pas de limites
 
 ---
 
@@ -429,6 +430,8 @@ note:
 
 ![définition function proxy](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-create-vnet/create-proxy.png)
 
+<small>source: docs.microsoft.com</small>
+
 note:
 * API Management
 * Azure front door 🌟
@@ -439,14 +442,17 @@ note:
 
 * static web on blob storage
 
-
 ---
 
 ![static website on azure blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
+<small>source: docs.microsoft.com</small>
+
 ---
 
 ![architecture web app serverless](https://docs.microsoft.com/fr-fr/azure/architecture/reference-architectures/serverless/_images/serverless-web-app.png)
+
+<small>source: docs.microsoft.com</small>
 
 note:
 * architectures référence azure
@@ -465,6 +471,8 @@ note:
 ---
 
 ![architecture Netflix](https://pbs.twimg.com/media/DUyIfFtX0AAoZGz.jpg)
+
+<small>source: Netflix</small>
 
 ---
 
@@ -745,10 +753,14 @@ note:
 
 ![ecran app settings](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
+<small>source: docs.microsoft.com</small>
+
 ---
 
 
 ![ecran platform features](https://docs.microsoft.com/fr-fr/azure/azure-functions/media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+
+<small>source: docs.microsoft.com</small>
 
 ---
 
@@ -871,12 +883,16 @@ note:
 
 ![Application map in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/opencensus-python/application-map.png)
 
+<small>source: docs.microsoft.com</small>
+
 note:
 * application map
 
 ---
 
 ![Transaction diagnostics in app insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/media/transaction-diagnostics/searchresults.png)
+
+<small>source: docs.microsoft.com</small>
 
 note:
 * transaction diagnostics
@@ -897,6 +913,8 @@ note:
 ---
 
 ![Nouveaux jobs Azure DevOps functions](https://docs.microsoft.com/en-us/azure/azure-functions/media/functions-how-to-azure-devops/build-templates.png)
+
+<small>source: docs.microsoft.com</small>
 
 ---
 
@@ -925,16 +943,15 @@ note:
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 ## Conclusion
-* focus sur le code
-* prise en main facilitée
-* évolue rapidement
-* contraintes
+* focus sur le code <!-- .element: class="faded" -->
+* prise en main facilitée <!-- .element: class="faded" -->
+* contraintes <!-- .element: class="faded" -->
 
 note:
 * qualité du code
-* aller sur cloud pour pas cher
+* managé / cloud accessible
 * pas tous les uses cases
-
+* évolue rapidement 
 
 ---
 

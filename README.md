@@ -39,6 +39,9 @@ Ou pour la version imprimable <http://127.0.0.1:8080/?print-pdf&showNotes=separa
 ## Licensing
 
 Cette présentation utilise du code source libre sous licence MIT (RevealJS)
-ou BSD (Highlight.js) ainsi que des images libres sous licence Creative Commons (CC0)
+ou BSD (Highlight.js) ainsi que des images libres sous licence Creative Commons (CC0).
+
+Elle incorpore des liens vers des images extraites de la
+[documentation microsoft](https://docs.microsoft.com/en-us/azure/)
 
 
