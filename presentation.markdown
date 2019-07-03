@@ -6,7 +6,10 @@
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
 
-## ... et dans la vraie vie ?
+## ... dans la vraie vie ?
+
+note:
+* anecdote
 
 ---
 
@@ -47,9 +50,11 @@ note:
 * code 👩‍💻 <!-- .element: class="faded" -->
 
 note:
+* choix du matériel
 * billing one shot
 * pannes matérielles
 * réseau (firewall, fai)
+* anecdote fai
 
 ---
 
@@ -60,8 +65,8 @@ note:
 * code 👨‍💻 <!-- .element: class="faded" -->
 
 note:
-* scalabilité
 * pannes logicielles
+* scalabilité
 
 ---
 
@@ -101,7 +106,6 @@ note:
 note:
 * Microsoft
 * ecosystème Azure
-* déclencheur = événement
 
 ---
 
@@ -114,7 +118,7 @@ note:
 ---
 
 ## ⚡ functions
-* event-driven
+* event-driven <!-- .element: class="faded" -->
 * infinite scaling
 
 note:
@@ -161,8 +165,8 @@ note:
 ---
 
 ## ⚡ functions
-* event-driven
-* infinite scaling 
+* event-driven <!-- .element: class="faded" -->
+* infinite scaling <!-- .element: class="faded" -->
 * pay as you go <!-- .element: class="fragment" -->
 
 note:
@@ -208,9 +212,10 @@ public ... run(...) {
 }
 ```
 
-https:// .... .azurewebsites.net/api/<mark>hello</mark>
+* https:// .... .azurewebsites.net/api/<mark>hello</mark>
 
 note:
+* route par défaut
 * métaprogrammation
 
 ---
@@ -226,6 +231,9 @@ public HttpResponseMessage run(
 }
 ```
 
+note:
+* typage
+
 ---
 
 ```typescript 
@@ -240,7 +248,9 @@ public ... run(
 ```
 
 note:
-* annotations sur return
+* annotations
+* méthodes, auth level
+* sur return également
 
 ---
 
@@ -263,7 +273,7 @@ public HttpResponseMessage run(
 
 ```typescript 
 ...
-public HttpResponseMessage run(
+public ... run(
     ...
     final ExecutionContext context) {
 
@@ -325,11 +335,10 @@ note:
 
 ```typescript
 ...
-@FunctionName("hello")
-public HttpResponseMessage run(
-    @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS,
+public ... run(
+    @HttpTrigger(...
         route = "trigger/{id}/{name=EMPTY}")
-    HttpRequestMessage<Optional<String>> request,
+    ... request,
     @BindingName("id") String id,
     @BindingName("name") String name,
     ...) {
@@ -338,7 +347,7 @@ public HttpResponseMessage run(
 
 }
 ```
-https:// .... .azurewebsites.net/api/trigger/<mark>1234</mark>/<mark>test</mark>
+https:// .... .azurewebsites.net/api/trigger/<mark>1234</mark>/<mark>test</mark> 
 
 note:
 * route parameters
@@ -419,6 +428,7 @@ note:
 
 note:
 * API créé rapidement
+* outils built-in
 
 ---
 
@@ -433,6 +443,8 @@ note:
 <small>source: docs.microsoft.com</small>
 
 note:
+* gratuite
+* autres options:
 * API Management
 * Azure front door 🌟
 
@@ -441,6 +453,9 @@ note:
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 * static web on blob storage
+
+note:
+* hébergement statique
 
 ---
 
@@ -484,7 +499,7 @@ note:
 
 note:
 * micro-fonctionnalité avec peut-être bcp de trafic
-* loterie bons de réduction
+* anecdote loterie bons de réduction
 
 ---
 
@@ -500,8 +515,8 @@ note:
 * queue ↦ queue <!-- .element: class="fragment" -->
 
 note:
-* interfaces entre systèmes
-* extensibilité
+* interfaces entre systèmes (extensibilité)
+* enrichissement
 * volumétrie non connues à l'avance
 
 ---
@@ -583,6 +598,9 @@ public static string Run(...)
 
 ![schema event sourcing](resource/event_sourcing.svg)
 
+note:
+*base de données
+
 ---
 
 ## écrire dans une base
@@ -627,7 +645,7 @@ note:
 * change feed processor <!-- .element: class="fragment" -->
 
 note:
-* c^ trigger
+* c^ SQL trigger
 
 ---
 
@@ -635,6 +653,7 @@ note:
 
 note:
 * hot/cold
+* datalake
 
 ---
 
@@ -653,7 +672,7 @@ note:
 # opiniated framework
 
 note:
-* cadre dirigiste
+* framework dirigiste
 * simplifie le dév
 
 ---
@@ -670,6 +689,7 @@ note:
 ## resources = bindings
 * bus de messages <!-- .element: class="fragment" -->
 * bases de données <!-- .element: class="fragment" -->
+* stockage <!-- .element: class="fragment" -->
 * SignalR <!-- .element: class="fragment" -->
 * etc. <!-- .element: class="fragment" -->
 
@@ -732,6 +752,7 @@ note:
 note:
 * séparer logique métier
 * functions = framework
+* anecdote débats
 
 ---
 
@@ -740,7 +761,7 @@ note:
 # ⚡ = 😎
 
 note:
-* avantages
+* cool features
 
 ---
 
@@ -748,6 +769,10 @@ note:
 * variables d'environnement <!-- .element: class="fragment" -->
 * Azure key vault 🌟 <!-- .element: class="fragment" -->
 * local.settings.json <!-- .element: class="fragment" -->
+
+note:
+* vs (hard coded)
+* technologie de conteneurs
 
 ---
 
@@ -762,17 +787,21 @@ note:
 
 <small>source: docs.microsoft.com</small>
 
+note:
+* cors
+* authn / authz
+
 ---
 
-## en local
+## dev en local
 * Azure functions tools (cli) <!-- .element: class="fragment" -->
 * debugging <!-- .element: class="fragment" -->
 * intégration maven / dotnet <!-- .element: class="fragment" -->
 * emulateurs <!-- .element: class="fragment" -->
 
 note:
-* != autres faas 💡 (docker)
-* Cosmos DB
+* expérience++ vs autres faas 💡 (docker...)
+* émulateur Cosmos DB
 
 ---
 
@@ -789,8 +818,9 @@ note:
 
 note:
 * lié au framework
-* contournements 🤔 (cache partagé) 
-* exemple plages id vs pays
+* contournements 🤔 (cache partagé, système de fichiers) 
+* anecdote plages id vs pays
+* notification multi-instances
 
 ---
 
@@ -802,13 +832,13 @@ note:
 
 ---
 
-## cold start 😭
+## cold start 😤
 
 note:
-* conteneurs, c^ orchestrateur
-* à la demande / éteint si inactif
+* conteneurs / orchestrateur
+* infinite scaling = éteint si inactif
 * billing
-* qq secondes, en théorie 💡
+* qq secondes, en théorie 💡 (+JVM +Spring)
 
 ---
 
@@ -859,6 +889,9 @@ note:
 * vnet / ase 🌟 <!-- .element: class="fragment" -->
 * dns <!-- .element: class="fragment" -->
 
+note:
+* public sur internet par défaut
+
 ---
 
 ## pricing
@@ -866,6 +899,7 @@ note:
 note:
 * avoir une idée de la volumétrie
 * vs. prix fixe mensuel instance vm
+* stockage / réseau
 
 ---
 
@@ -924,6 +958,7 @@ note:
 
 note:
 * stateful ?
+* anecdote
 
 ---
 
@@ -943,15 +978,16 @@ note:
 <!-- .slide:  data-background="var(--microsoft-green)" class="tip" -->
 
 ## Conclusion
-* focus sur le code <!-- .element: class="faded" -->
-* prise en main facilitée <!-- .element: class="faded" -->
-* contraintes <!-- .element: class="faded" -->
+* focus sur le code <!-- .element: class="fragment" -->
+* prise en main facilitée <!-- .element: class="fragment" -->
+* contraintes <!-- .element: class="fragment" -->
 
 note:
 * qualité du code
 * managé / cloud accessible
 * pas tous les uses cases
-* évolue rapidement 
+* évolue rapidement
+* open source 
 
 ---
 
