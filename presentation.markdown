@@ -9,14 +9,14 @@
 ## ... dans la vraie vie ?
 
 note:
-* anecdote
+* Retour d'expérience sur le développement et le déploiement d'une application serverless en production
 
 ---
 
 ## serverless
 
 note:
-* nom mal choisi
+* le terme est mal choisi
 
 ---
 
@@ -24,8 +24,8 @@ note:
 <del>serverless</del>
 
 note:
-* ↘ config, gestion
-* managé
+* moins de servers = moins de config, moins de gestion
+* managé pour moi
 * focus sur le code
 
 ---
@@ -37,9 +37,9 @@ note:
 * code <!-- .element: class="fragment" -->
 
 note:
-* de quoi on parle ?
-* déployer mon app
-* je gère, je m'en occupe
+* qu'entend-on par serveurs ?
+* ce dont j'ai besoin pour rendre mon app disponible
+* qu'est-ce que je gère, de quoi suis-je responsable
 
 ---
 
@@ -50,11 +50,11 @@ note:
 * code 👩‍💻 <!-- .element: class="faded" -->
 
 note:
-* choix du matériel
+* large choix du matériel
 * billing one shot
-* pannes matérielles
-* réseau (firewall, fai)
-* anecdote fai
+* je dois gérer les pannes matérielles
+* les pannes réseau (firewall...)
+* et les pannes de mon FAI !
 
 ---
 
@@ -65,8 +65,8 @@ note:
 * code 👨‍💻 <!-- .element: class="faded" -->
 
 note:
-* pannes logicielles
-* scalabilité
+* je dois gérer les pannes logicielles
+* et la scalabilité
 
 ---
 
@@ -77,8 +77,8 @@ note:
 * code 👩‍💻 <!-- .element: class="faded" -->
 
 note:
-* montées de version
-* archi logicielle (bases, messaging, etc.)
+* je dois gérer les montées de version
+* et l'archi logicielle (bases, messaging, etc.)
 
 ---
 
@@ -88,6 +88,10 @@ note:
 * framework ⛅
 * code 👩‍💻 
 
+note:
+* l'infra est managée pour moi
+* juste "exécutez-moi ce code"
+
 ---
 
 ## plateformes faas
@@ -96,15 +100,15 @@ note:
 * AWS lambda <!-- .element: class="fragment" -->
 
 note:
-* sous-partie de serverless
-* open faas
+* faas = sous-partie de serverless
+* open faas => je dois gérer mon infra (donc rarement serverless)
 
 ---
 
 ## ⚡ functions 
 
 note:
-* Microsoft
+* Implémentation Microsoft
 * ecosystème Azure
 
 ---
@@ -122,9 +126,9 @@ note:
 * infinite scaling
 
 note:
-* vs vm pré-provisionnée
-* load balancer auto
-* eg black-friday
+* vs VM pré-provisionnée
+* load balancer automatique
+* exemple: black-friday
 
 ---
 
@@ -147,20 +151,23 @@ note:
 
 ![montée en charge](resource/load_vs_capacity007.png)
 
+note:
+* escalade ?
 
 ---
 
 ![montée en charge](resource/load_vs_capacity009.png)
 
+note:
+* je continue à payer "pour rien"
 
 ---
 
 ![montée en charge](resource/load_vs_capacity011.png)
 
 note:
-* automatique
-* managé
-* pas de limites
+* scaling automatique, managé pour moi
+* pas de limites (ou limites très élevées)
 
 ---
 
@@ -170,10 +177,11 @@ note:
 * pay as you go <!-- .element: class="fragment" -->
 
 note:
+* je ne paie que ce qui tourne
+* free tier pour le 1er million d'appels
 * 0 exécution = 0€
-* exemple uat, testing
-* free tier 1 million
-* reste stockage + bande passante
+* intéressant en uat ou en testing
+* reste à payer stockage + bande passante
 
 ---
 
@@ -216,7 +224,7 @@ public ... run(...) {
 
 note:
 * route par défaut
-* métaprogrammation
+* métaprogrammation (annotations ou attributs)
 
 ---
 
@@ -249,8 +257,9 @@ public ... run(
 
 note:
 * annotations
-* méthodes, auth level
-* sur return également
+* méthodes GET / POST
+* authLevel pour gérer l'authentification
+* annotations sur return également possible
 
 ---
 
@@ -269,6 +278,9 @@ public HttpResponseMessage run(
 }
 ```
 
+note:
+* manipulation des paramètres
+
 ---
 
 ```typescript 
@@ -282,6 +294,9 @@ public ... run(
     ...
 }
 ```
+
+note:
+* accès aux métadonnées via le contexte
 
 ---
 
@@ -328,8 +343,9 @@ public class Function {
 ```
 
 note:
-* généré: c#, java
-* à écrire: nodejs, python
+* requis par le framework
+* généré à la compilation pour c#, java
+* à écrire manuellement pour nodejs, python
 
 ---
 
@@ -350,7 +366,7 @@ public ... run(
 https:// .... .azurewebsites.net/api/trigger/<mark>1234</mark>/<mark>test</mark> 
 
 note:
-* route parameters
+* named route parameters
 
 ---
 
@@ -371,7 +387,7 @@ public class Function {
 ```
 
 note:
-* API plus simple
+* API c# plus simple
 
 ---
 
@@ -380,6 +396,9 @@ mvn archetype:generate
 	"-DarchetypeGroupId=com.microsoft.azure" 
 	"-DarchetypeArtifactId=azure-functions-archetype"
 ```
+
+note:
+* archétype et plugins maven
 
 ---
 
@@ -392,9 +411,6 @@ mvn azure-functions:run
 
 ![video mvn azure-functions:run](resource/mvn_azure_functions_run.png)
 
-note:
-* spring cloud functions
-
 ---
 
 ## function app
@@ -402,7 +418,7 @@ note:
 * https://<mark> .... </mark>.azurewebsites.net/api/hello 
 
 note:
-* groupement logique
+* permet un groupement logique de plusieurs fonctions
 * mises à jour simultanées
 * paramétrage commun
 
@@ -414,7 +430,7 @@ note:
 * triggers <!-- .element: class="fragment" -->
 
 note:
-* automatisation vs code manuel 
+* permet automatisation (vs code manuel) 
 
 ---
 
@@ -427,8 +443,7 @@ note:
 ## back-end + spa
 
 note:
-* API créé rapidement
-* outils built-in
+* API créée rapidement
 
 ---
 
@@ -443,8 +458,8 @@ note:
 <small>source: docs.microsoft.com</small>
 
 note:
-* gratuite
-* autres options:
+* gratuit
+* autres options (payantes):
 * API Management
 * Azure front door 🌟
 
@@ -470,6 +485,7 @@ note:
 <small>source: docs.microsoft.com</small>
 
 note:
+* exemple d'architecture SPA serverless
 * architectures référence azure
 
 ---
@@ -481,7 +497,7 @@ note:
 ![architecture complexe](resource/complex.svg)
 
 note:
-* déplacement complexité
+* déplacement de la complexité (du code vers l'archi des micro-services)
 
 ---
 
@@ -499,7 +515,7 @@ note:
 
 note:
 * micro-fonctionnalité avec peut-être bcp de trafic
-* anecdote loterie bons de réduction
+* exemple loterie bons de réduction
 
 ---
 
@@ -535,10 +551,10 @@ public static void Run(
 ```
 
 note:
-* ack vs. exceptions
-* retries
-* poison queue
-* string
+* gestion de l'acquittement automatique
+* si exception = retry
+* et poison queue
+* queue item = string
 
 ---
 
@@ -551,8 +567,8 @@ public static void Run(
 ```
 
 note:
-* objet et metadonnées
-* connection string (vs. hard coded)
+* queue item = objet (string) + metadonnées
+* connection string pour se connecter au bus (variable env, non hard coded)
 
 ---
 
@@ -584,6 +600,9 @@ public static string Run(...)
 }
 ```
 
+note:
+* annotation sur le return !
+
 ---
 
 <!-- .slide: data-background="var(--microsoft-blue)" -->
@@ -599,7 +618,7 @@ public static string Run(...)
 ![schema event sourcing](resource/event_sourcing.svg)
 
 note:
-*base de données
+* différentes bases de données
 
 ---
 
@@ -635,8 +654,8 @@ public static void Run(
 ```
 
 note:
-* méthodes IQueryable
-* CloudTable
+* utiliser les méthodes de IQueryable
+* objet CloudTable
 
 ---
 
@@ -645,14 +664,14 @@ note:
 * change feed processor <!-- .element: class="fragment" -->
 
 note:
-* c^ SQL trigger
+* CFP = équivalent d'un trigger SQL
 
 ---
 
 ![schema event sourcing](resource/event_sourcing.svg)
 
 note:
-* hot/cold
+* hot/cold (rapide et cher vs lent et peu cher)
 * datalake
 
 ---
@@ -673,7 +692,7 @@ note:
 
 note:
 * framework dirigiste
-* simplifie le dév
+* simplifie le développement
 
 ---
 
@@ -706,8 +725,8 @@ note:
 * powershell <!-- .element: class="fragment" -->
 
 note:
-* c# et javascript ++
-* vs autres faas
+* c# et javascript sont les plus utilisés
+* les autres faas proposent d'autres options
 
 ---
 
@@ -723,8 +742,8 @@ note:
 ## IoC + DI 🌟
 
 note:
-* csharp
-* spring
+* possible depuis peu en csharp
+* sinon via spring cloud functions
 
 ---
 
@@ -741,7 +760,7 @@ public class Startup : FunctionsStartup
 ```
 
 note:
-* Startup .Net core
+* ressemble au Startup .Net core
 
 ---
 
@@ -750,9 +769,9 @@ note:
 * DDD 
 
 note:
-* séparer logique métier
+* utiliser IoC pour séparer la logique métier
 * functions = framework
-* anecdote débats
+* pouvoir changer de solution
 
 ---
 
@@ -771,7 +790,7 @@ note:
 * local.settings.json <!-- .element: class="fragment" -->
 
 note:
-* vs (hard coded)
+* vs credentials hard coded
 * technologie de conteneurs
 
 ---
@@ -789,7 +808,7 @@ note:
 
 note:
 * cors
-* authn / authz
+* authentification / authorization
 
 ---
 
@@ -818,9 +837,8 @@ note:
 
 note:
 * lié au framework
-* contournements 🤔 (cache partagé, système de fichiers) 
-* anecdote plages id vs pays
-* notification multi-instances
+* contournements possibles 🤔 (cache partagé, système de fichiers) 
+* notification multi-instances impossible
 
 ---
 
@@ -836,8 +854,8 @@ note:
 
 note:
 * conteneurs / orchestrateur
-* infinite scaling = éteint si inactif
-* billing
+* infinite scaling implique éteint si inactif
+* (pratique pour le billing, embêtant pour le cold start)
 * qq secondes, en théorie 💡 (+JVM +Spring)
 
 ---
@@ -860,6 +878,7 @@ note:
 note:
 * durée limitée ☹
 * mais en mémoire pendant cette durée
+* opportunité pour garder des choses en mémoire
 
 ---
 
@@ -890,15 +909,15 @@ note:
 * dns <!-- .element: class="fragment" -->
 
 note:
-* public sur internet par défaut
+* public sur internet par défaut (peut ne pas convenir à tout le monde)
 
 ---
 
 ## pricing
 
 note:
-* avoir une idée de la volumétrie
-* vs. prix fixe mensuel instance vm
+* avoir une idée de la volumétrie pour prévoir le prix
+* pas de prix fixe mensuel != instance VM par ex.
 * stockage / réseau
 
 ---
@@ -941,7 +960,7 @@ note:
 * templates ARM <!-- .element: class="fragment" -->
 
 note:
-* vs deploy depuis poste local 
+* ne pas deploy depuis son poste local 
 * yaml / json
 
 ---
@@ -958,7 +977,6 @@ note:
 
 note:
 * stateful ?
-* anecdote
 
 ---
 
